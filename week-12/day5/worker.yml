@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+  Labels:
+    app: mydeployment
+    type: frontend
+spec: 
+  template:
+    metadata:
+      name: workr-pod
+      Labels: 
+        app: worker-app
+        type: frontend
+    spec: 
+      containers:
+        - name: worker-app
+          image: hanansalem88/worker
+  selector:
+    matchLabels:
+      type: frontend
+    

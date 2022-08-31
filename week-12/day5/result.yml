@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-deployment
+  labels:
+    app: mydeployment
+    type: frontend
+spec:
+  template:
+    metadata:
+      name: result-pod
+      labels:
+        app: result-app
+        type: frontend
+    spec:
+      containers:
+        - name: result-app
+          image: hanansalem88/result
+          ports:  
+            - 80
+  selector:
+    matchLabels:
+      type: frontend
