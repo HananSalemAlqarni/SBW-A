@@ -4,6 +4,14 @@ metadata:
   name: postgres
   labels:
     app: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
     spec:
       containers:
           image: postgres:latest
