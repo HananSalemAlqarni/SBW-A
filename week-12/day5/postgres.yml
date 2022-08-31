@@ -22,6 +22,5 @@ spec:
           ports:
           - containerPort: 5432
       volumes:
-      - name: db-data
         persistentVolumeClaim:
           claimName: postgres-pv-clai    
