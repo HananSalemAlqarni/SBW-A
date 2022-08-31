@@ -1,22 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  labels: 
+    apps: worker
+  name: worker
+spec: 
+  clusterIP: None
+  selector: 
+    app: worker
+--- 
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: worker-deployment
-  Labels:
-    app: mydeployment
-    type: frontend
+metadata: 
+  labels: 
+    app: worker
+  name: worker
 spec: 
-  template:
-    metadata:
-      name: workr-pod
-      Labels: 
-        app: worker-app
-        type: frontend
-    spec: 
-      containers:
-        - name: worker-app
-          image: hanansalem88/worker
+  replicas: 1
   selector:
     matchLabels:
-      type: frontend
-    
+      app: worker
+  template: 
+    metadata: 
+      labels: 
+        app: worker
+    spec: 
+      containers: 
+      - image: hanansalem88/worker:latest
+        name: worker
